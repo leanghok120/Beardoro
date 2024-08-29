@@ -1,5 +1,11 @@
+import Timer from "./Timer";
+
 function App() {
-  return <h1 className="text-3xl text-white font-bold">Hello world!</h1>;
+  return (
+    <div className="h-screen flex justify-center items-center">
+      <Timer />
+    </div>
+  );
 }
 
 export default App;
