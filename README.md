@@ -1,4 +1,4 @@
-# Beardoro: A Customizable Pomodoro Timer Web App
+# Beardoro: A Customizable Pomodoro Timer
 
 ## Overview
 
