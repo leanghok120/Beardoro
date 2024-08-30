@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { RotateCw } from "lucide-react";
 
 function Timer() {
   const [time, setTime] = useState(50 * 60); // 50 min
@@ -25,6 +26,11 @@ function Timer() {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  }
+
+  function resetTimer() {
+    setIsActive(false);
+    setTime(50 * 60);
   }
 
   function changeMode(mode) {
@@ -63,12 +69,17 @@ function Timer() {
         <h1 className="font-bold text-white text-center text-9xl">
           {formatTime(time)}
         </h1>
-        <button
-          className="font-bold text-2xl bg-white rounded-full py-1.5 px-8 mt-10"
-          onClick={toggleTimer}
-        >
-          {isActive ? "pause" : "start"}
-        </button>
+        <div className="flex items-center gap-2 mt-10">
+          <button
+            className="font-bold text-2xl bg-white rounded-full py-1.5 px-8"
+            onClick={toggleTimer}
+          >
+            {isActive ? "pause" : "start"}
+          </button>
+          <button className="text-white p-2 rounded-full" onClick={resetTimer}>
+            {<RotateCw />}
+          </button>
+        </div>
       </div>
     </div>
   );
