@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RotateCw } from "lucide-react";
+import { Reset, Start } from "./Buttons";
 
 function Timer() {
   const [time, setTime] = useState(50 * 60); // 50 min
@@ -70,15 +70,8 @@ function Timer() {
           {formatTime(time)}
         </h1>
         <div className="flex items-center gap-2 mt-10">
-          <button
-            className="font-bold text-2xl bg-white rounded-full py-1.5 px-8"
-            onClick={toggleTimer}
-          >
-            {isActive ? "pause" : "start"}
-          </button>
-          <button className="text-white p-2 rounded-full" onClick={resetTimer}>
-            {<RotateCw />}
-          </button>
+          <Start onClick={toggleTimer} isActive={isActive} />
+          <Reset onClick={resetTimer} />
         </div>
       </div>
     </div>
