@@ -3,9 +3,10 @@ import { Reset, Start } from "./Buttons";
 import Setting from "./Setting";
 
 function Timer() {
-  const [time, setTime] = useState(50 * 60); // 50 min
+  const [time, setTime] = useState(1 * 60);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState("pomodoro");
+  const [sound, setSound] = useState(new Audio("/src/assets/bell.mp3"));
 
   useEffect(() => {
     let interval = null;
@@ -15,6 +16,7 @@ function Timer() {
       }, 1000);
     } else if (time === 0) {
       setIsActive(false);
+      sound.play();
     }
     return () => clearInterval(interval);
   }, [isActive, time]);
