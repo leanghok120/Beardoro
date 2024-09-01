@@ -25,6 +25,7 @@ function Setting() {
             {<XIcon />}
           </button>
           <h1 className="mt-5 font-bold text-4xl">Settings</h1>
+          <p className="mt-4 text-lg">Coming soon!</p>
         </div>
       </div>
     </div>
