@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Reset, Start } from "./Buttons";
+import Setting from "./Setting";
 
 function Timer() {
   const [time, setTime] = useState(50 * 60); // 50 min
@@ -72,6 +73,7 @@ function Timer() {
         <div className="flex items-center gap-2 mt-10">
           <Start onClick={toggleTimer} isActive={isActive} />
           <Reset onClick={resetTimer} />
+          <Setting />
         </div>
       </div>
     </div>
