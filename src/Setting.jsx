@@ -1,8 +1,14 @@
 import { Settings, XIcon } from "lucide-react";
 import { useState } from "react";
 
-function Setting() {
+function Setting({ setBackground }) {
   const [modal, setModal] = useState(false);
+  const backgroundImages = [
+    "/src/assets/night-ghibli.jpg",
+    "/src/assets/paris-rain.jpg",
+    "/src/assets/sunrise-seoul.jpg",
+  ];
+
   function toggleModal() {
     setModal(!modal);
   }
@@ -25,7 +31,18 @@ function Setting() {
             {<XIcon />}
           </button>
           <h1 className="mt-5 font-bold text-4xl">Settings</h1>
-          <p className="mt-4 text-lg">Coming soon!</p>
+          <h2 className="mt-8 font-bold text-2xl">Backgrounds</h2>
+          <div className="grid grid-cols-3 gap-4 mt-4">
+            {backgroundImages.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt="background"
+                className="rounded-2xl cursor-pointer transition-all hover:scale-110"
+                onClick={() => setBackground(image)}
+              ></img>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Reset, Start } from "./Buttons";
 import Setting from "./Setting";
 
-function Timer() {
-  const [time, setTime] = useState(1 * 60);
+function Timer({ setBackground }) {
+  const [time, setTime] = useState(50 * 60);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState("pomodoro");
   const [sound, setSound] = useState(new Audio("/src/assets/bell.mp3"));
@@ -75,7 +75,7 @@ function Timer() {
         <div className="flex items-center gap-2 mt-10">
           <Start onClick={toggleTimer} isActive={isActive} />
           <Reset onClick={resetTimer} />
-          <Setting />
+          <Setting setBackground={setBackground} />
         </div>
       </div>
     </div>
