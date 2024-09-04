@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div
-      className={`h-screen bg-center bg-cover bg-no-repeat flex justify-center items-center`}
+      className={`h-screen bg-center bg-cover bg-no-repeat flex justify-center items-center transition-all`}
       style={{ backgroundImage: `url(${background})` }}
     >
       <Timer setBackground={setBackground} />

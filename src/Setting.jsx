@@ -15,7 +15,10 @@ function Setting({ setBackground }) {
 
   return (
     <div>
-      <button className="text-white p-2 rounded-full" onClick={toggleModal}>
+      <button
+        className="text-white p-2 rounded-full absolute top-5 right-5"
+        onClick={toggleModal}
+      >
         {<Settings />}
       </button>
 
