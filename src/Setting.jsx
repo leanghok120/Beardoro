@@ -27,7 +27,7 @@ function Setting({ setBackground }) {
         onClick={toggleModal}
       >
         <div
-          className={`w-2/6 bg-black text-white rounded-xl shadow p-8 transition-all ${modal ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}
+          className={`w-5/6 lg:w-2/6 bg-black text-white rounded-3xl shadow p-8 transition-all ${modal ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}
           onClick={(e) => e.stopPropagation()}
         >
           <button className="absolute top-2 right-2 p-1" onClick={toggleModal}>
