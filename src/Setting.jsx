@@ -46,6 +46,8 @@ function Setting({ setBackground }) {
               ></img>
             ))}
           </div>
+          <h2 className="mt-8 font-bold text-2xl">Timer</h2>
+          <p className="mt-3 font-bold text-lg">Coming soon!</p>
         </div>
       </div>
     </div>
