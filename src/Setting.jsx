@@ -1,7 +1,7 @@
 import { Settings, XIcon } from "lucide-react";
 import { useState } from "react";
 
-function Setting({ setBackground }) {
+function Setting({ setBackground, min, handleMinChange }) {
   const [modal, setModal] = useState(false);
   const backgroundImages = [
     "/src/assets/night-ghibli.jpg",
@@ -47,7 +47,15 @@ function Setting({ setBackground }) {
             ))}
           </div>
           <h2 className="mt-8 font-bold text-2xl">Timer</h2>
-          <p className="mt-3 font-bold text-lg">Coming soon!</p>
+          <input
+            type="number"
+            placeholder="Minute"
+            value={min}
+            onChange={(e) => {
+              handleMinChange(e.target.value);
+            }}
+            className="bg-transparent border-2 rounded-lg px-3 py-2 mt-4"
+          />
         </div>
       </div>
     </div>

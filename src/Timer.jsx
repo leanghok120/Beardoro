@@ -3,7 +3,8 @@ import { Reset, Start } from "./Buttons";
 import Setting from "./Setting";
 
 function Timer({ setBackground }) {
-  const [time, setTime] = useState(50 * 60);
+  const [min, setMin] = useState(50);
+  const [time, setTime] = useState(min * 60);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState("pomodoro");
   const [sound, setSound] = useState(new Audio("/src/assets/bell.mp3"));
@@ -33,7 +34,7 @@ function Timer({ setBackground }) {
 
   function resetTimer() {
     setIsActive(false);
-    setTime(50 * 60);
+    setTime(min * 60);
   }
 
   function changeMode(mode) {
@@ -42,7 +43,7 @@ function Timer({ setBackground }) {
 
     switch (mode) {
       case "pomodoro":
-        setTime(50 * 60);
+        setTime(min * 60);
         break;
       case "short break":
         setTime(15 * 60);
@@ -51,8 +52,13 @@ function Timer({ setBackground }) {
         setTime(25 * 60);
         break;
       default:
-        setTime(50 * 60);
+        setTime(min * 60);
     }
+  }
+
+  function handleMinChange(newMin) {
+    setMin(newMin);
+    setTime(newMin * 60);
   }
 
   return (
@@ -75,7 +81,12 @@ function Timer({ setBackground }) {
         <div className="flex items-center gap-2 mt-10">
           <Start onClick={toggleTimer} isActive={isActive} />
           <Reset onClick={resetTimer} />
-          <Setting setBackground={setBackground} />
+          <Setting
+            setBackground={setBackground}
+            min={min}
+            setMin={setMin}
+            handleMinChange={handleMinChange}
+          />
         </div>
       </div>
     </div>
