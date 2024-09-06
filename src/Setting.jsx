@@ -47,15 +47,22 @@ function Setting({ setBackground, min, handleMinChange }) {
             ))}
           </div>
           <h2 className="mt-8 font-bold text-2xl">Timer</h2>
-          <input
-            type="number"
-            placeholder="Minute"
-            value={min}
-            onChange={(e) => {
-              handleMinChange(e.target.value);
-            }}
-            className="bg-transparent border-2 rounded-lg px-3 py-2 mt-4"
-          />
+          <form className="mt-4">
+            <label for="minute" className="block text-gray-400">
+              Pomodoro
+            </label>
+            <input
+              type="number"
+              placeholder="Minute"
+              id="minute"
+              name="minute"
+              value={min}
+              onChange={(e) => {
+                handleMinChange(e.target.value);
+              }}
+              className="bg-transparent border-2 rounded-lg px-3 py-2"
+            />
+          </form>
         </div>
       </div>
     </div>
