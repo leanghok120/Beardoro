@@ -3,24 +3,30 @@ import { Reset, Start } from "./Buttons";
 import Setting from "./Setting";
 
 function Timer({ setBackground }) {
-  const [min, setMin] = useState(50);
-  const [time, setTime] = useState(min * 60);
+  const [pomoDuration, setPomoDuration] = useState(50);
+  const [shortDuration, setShortDuration] = useState(15);
+  const [longDuration, setLongDuration] = useState(25);
+  const [timeLeft, setTimeLeft] = useState(pomoDuration * 60);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState("pomodoro");
   const [sound, setSound] = useState(new Audio("/src/assets/bell.mp3"));
 
   useEffect(() => {
     let interval = null;
-    if (isActive && time > 0) {
+    if (isActive && timeLeft > 0) {
       interval = setInterval(() => {
-        setTime((time) => time - 1);
+        setTimeLeft((time) => time - 1);
       }, 1000);
-    } else if (time === 0) {
+    } else if (timeLeft === 0) {
       setIsActive(false);
       sound.play();
     }
     return () => clearInterval(interval);
-  }, [isActive, time]);
+  }, [isActive, timeLeft]);
+
+  useEffect(() => {
+    updateTimerDuration();
+  }, [pomoDuration, shortDuration, longDuration, mode]);
 
   function toggleTimer() {
     setIsActive(!isActive);
@@ -34,31 +40,29 @@ function Timer({ setBackground }) {
 
   function resetTimer() {
     setIsActive(false);
-    setTime(min * 60);
+    updateTimerDuration();
   }
 
-  function changeMode(mode) {
+  function changeMode(newMode) {
     setIsActive(false);
-    setMode(mode);
+    setMode(newMode);
+    updateTimerDuration(newMode);
+  }
 
-    switch (mode) {
+  function updateTimerDuration(currentMode = mode) {
+    switch (currentMode) {
       case "pomodoro":
-        setTime(min * 60);
+        setTimeLeft(pomoDuration * 60);
         break;
       case "short break":
-        setTime(15 * 60);
+        setTimeLeft(shortDuration * 60);
         break;
       case "long break":
-        setTime(25 * 60);
+        setTimeLeft(longDuration * 60);
         break;
       default:
-        setTime(min * 60);
+        setTimeLeft(pomoDuration * 60);
     }
-  }
-
-  function handleMinChange(newMin) {
-    setMin(newMin);
-    setTime(newMin * 60);
   }
 
   return (
@@ -76,16 +80,19 @@ function Timer({ setBackground }) {
       </div>
       <div className="flex flex-col items-center mt-8">
         <h1 className="font-bold text-white text-center text-9xl">
-          {formatTime(time)}
+          {formatTime(timeLeft)}
         </h1>
         <div className="flex items-center gap-2 mt-10">
           <Start onClick={toggleTimer} isActive={isActive} />
           <Reset onClick={resetTimer} />
           <Setting
             setBackground={setBackground}
-            min={min}
-            setMin={setMin}
-            handleMinChange={handleMinChange}
+            pomoDuration={pomoDuration}
+            setPomoDuration={setPomoDuration}
+            shortDuration={shortDuration}
+            setShortDuration={setShortDuration}
+            longDuration={longDuration}
+            setLongDuration={setLongDuration}
           />
         </div>
       </div>
