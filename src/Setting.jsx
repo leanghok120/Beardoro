@@ -54,7 +54,7 @@ function Setting({
               ></img>
             ))}
           </div>
-          <h2 className="mt-8 font-bold text-2xl">Timer</h2>
+          <h2 className="mt-8 font-bold text-2xl">Timers</h2>
           <form className="mt-4">
             <div className="mb-5">
               <label htmlFor="pomodoro" className="block text-gray-400">
