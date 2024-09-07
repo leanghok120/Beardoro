@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Reset, Start } from "./Buttons";
+import Bell from "./assets/bell.mp3";
 import Setting from "./Setting";
 
 function Timer({ setBackground }) {
@@ -22,7 +23,7 @@ function Timer({ setBackground }) {
   const [mode, setMode] = useState("pomodoro");
 
   // Sound for timer completion
-  const [sound] = useState(new Audio("/src/assets/bell.mp3"));
+  const [sound] = useState(new Audio(Bell));
 
   // setBackground with localstorage
   function setBackgroundWithStorage(image) {
