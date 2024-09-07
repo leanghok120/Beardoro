@@ -22,6 +22,12 @@ function Setting({
     setModal(!modal);
   }
 
+  const updateDuration = (setter, key) => (e) => {
+    const value = parseInt(e.target.value);
+    setter(value);
+    localStorage.setItem(key, value);
+  };
+
   return (
     <div>
       <button
@@ -74,9 +80,7 @@ function Setting({
                 name="pomodoro"
                 value={pomoDuration}
                 min={1}
-                onChange={(e) => {
-                  setPomoDuration(parseInt(e.target.value));
-                }}
+                onChange={updateDuration(setPomoDuration, "pomoDuration")}
                 className="bg-transparent border-2 rounded-lg px-3 py-2"
               />
             </div>
@@ -91,7 +95,7 @@ function Setting({
                 name="shortBreak"
                 value={shortDuration}
                 min={1}
-                onChange={(e) => setShortDuration(parseInt(e.target.value))}
+                onChange={updateDuration(setShortDuration, "shortDuration")}
                 className="bg-transparent border-2 rounded-lg px-3 py-2"
               />
             </div>
@@ -106,7 +110,7 @@ function Setting({
                 name="longBreak"
                 value={longDuration}
                 min={1}
-                onChange={(e) => setLongDuration(parseInt(e.target.value))}
+                onChange={updateDuration(setLongDuration, "longDuration")}
                 className="bg-transparent border-2 rounded-lg px-3 py-2"
               />
             </div>

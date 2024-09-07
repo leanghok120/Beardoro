@@ -2,7 +2,9 @@ import Timer from "./Timer";
 import { useState } from "react";
 
 function App() {
-  const [background, setBackground] = useState("/src/assets/night-ghibli.jpg");
+  const [background, setBackground] = useState(() => {
+    return localStorage.getItem("background") || "/src/assets/paris-rain.jpg";
+  });
 
   return (
     <div

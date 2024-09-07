@@ -3,20 +3,39 @@ import { Reset, Start } from "./Buttons";
 import Setting from "./Setting";
 
 function Timer({ setBackground }) {
-  const [pomoDuration, setPomoDuration] = useState(50);
-  const [shortDuration, setShortDuration] = useState(15);
-  const [longDuration, setLongDuration] = useState(25);
+  // Duration for modes
+  const [pomoDuration, setPomoDuration] = useState(() => {
+    return parseInt(localStorage.getItem("pomoDuration")) || 50;
+  });
+  const [shortDuration, setShortDuration] = useState(() => {
+    return parseInt(localStorage.getItem("shortDuration")) || 15;
+  });
+  const [longDuration, setLongDuration] = useState(() => {
+    return parseInt(localStorage.getItem("longDuration")) || 25;
+  });
 
   const [timeLeft, setTimeLeft] = useState(pomoDuration * 60);
 
-  // Timer active state
   const [isActive, setIsActive] = useState(false);
 
-  // pomodoro, short break, long break
+  // modes: pomodoro, short break, long break
   const [mode, setMode] = useState("pomodoro");
 
   // Sound for timer completion
   const [sound] = useState(new Audio("/src/assets/bell.mp3"));
+
+  // setBackground with localstorage
+  function setBackgroundWithStorage(image) {
+    setBackground(image);
+    localStorage.setItem("background", image);
+  }
+
+  // Get settings from localStorage
+  useEffect(() => {
+    localStorage.setItem("pomoDuration", pomoDuration);
+    localStorage.setItem("shortDuration", shortDuration);
+    localStorage.setItem("longDuration", longDuration);
+  }, [pomoDuration, shortDuration, longDuration]);
 
   // countdown logic
   useEffect(() => {
@@ -50,7 +69,6 @@ function Timer({ setBackground }) {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   }
 
-  // Reset timer
   function resetTimer() {
     setIsActive(false);
     updateTimerDuration();
@@ -101,7 +119,7 @@ function Timer({ setBackground }) {
           <Start onClick={toggleTimer} isActive={isActive} />
           <Reset onClick={resetTimer} />
           <Setting
-            setBackground={setBackground}
+            setBackground={setBackgroundWithStorage}
             pomoDuration={pomoDuration}
             setPomoDuration={setPomoDuration}
             shortDuration={shortDuration}
