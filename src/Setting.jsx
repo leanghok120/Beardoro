@@ -11,6 +11,7 @@ function Setting({
   setLongDuration,
 }) {
   const [modal, setModal] = useState(false);
+
   const backgroundImages = [
     "/src/assets/night-ghibli.jpg",
     "/src/assets/paris-rain.jpg",
@@ -29,11 +30,12 @@ function Setting({
       >
         {<Settings />}
       </button>
-
+      {/* Modal overlay */}
       <div
         className={`fixed inset-0 flex justify-center items-center transitions-colors ${modal ? "visible bg-black/20" : "invisible"}`}
         onClick={toggleModal}
       >
+        {/* Modal content */}
         <div
           className={`w-5/6 lg:w-2/6 h-3/4 bg-black text-white rounded-3xl shadow p-8 transition-all ${modal ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}
           onClick={(e) => e.stopPropagation()}
@@ -42,6 +44,8 @@ function Setting({
             {<XIcon />}
           </button>
           <h1 className="mt-5 font-bold text-4xl">Settings</h1>
+
+          {/* Background selection */}
           <h2 className="mt-8 font-bold text-2xl">Backgrounds</h2>
           <div className="grid grid-cols-3 gap-4 mt-4">
             {backgroundImages.map((image, index) => (
@@ -54,8 +58,11 @@ function Setting({
               ></img>
             ))}
           </div>
+
+          {/* Timer duration settings */}
           <h2 className="mt-8 font-bold text-2xl">Timers</h2>
           <form className="mt-4">
+            {/* Pomodoro duration input */}
             <div className="mb-5">
               <label htmlFor="pomodoro" className="block text-gray-400">
                 Pomodoro
@@ -73,6 +80,7 @@ function Setting({
                 className="bg-transparent border-2 rounded-lg px-3 py-2"
               />
             </div>
+            {/* Short break duration input */}
             <div className="mb-5">
               <label htmlFor="shortBreak" className="block text-gray-400">
                 Short Break
@@ -83,10 +91,11 @@ function Setting({
                 name="shortBreak"
                 value={shortDuration}
                 min={1}
-                onChange={(e) => setShortDuration(e.target.value)}
+                onChange={(e) => setShortDuration(parseInt(e.target.value))}
                 className="bg-transparent border-2 rounded-lg px-3 py-2"
               />
             </div>
+            {/* Long break duration input */}
             <div>
               <label htmlFor="longBreak" className="block text-gray-400">
                 Long Break
