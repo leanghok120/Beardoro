@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function App() {
   const [background, setBackground] = useState(() => {
-    return localStorage.getItem("background") || "/src/assets/paris-rain.jpg";
+    return localStorage.getItem("background") || "/paris-rain.jpg";
   });
 
   return (

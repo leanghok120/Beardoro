@@ -13,9 +13,9 @@ function Setting({
   const [modal, setModal] = useState(false);
 
   const backgroundImages = [
-    "/src/assets/night-ghibli.jpg",
-    "/src/assets/paris-rain.jpg",
-    "/src/assets/sunrise-seoul.jpg",
+    "/night-ghibli.jpg",
+    "/paris-rain.jpg",
+    "/sunrise-seoul.jpg",
   ];
 
   function toggleModal() {
