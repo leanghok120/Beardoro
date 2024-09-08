@@ -1,4 +1,4 @@
-import { Settings, XIcon } from "lucide-react";
+import { Settings, XIcon, Github, Twitter } from "lucide-react";
 import { useState } from "react";
 
 function Setting({
@@ -43,7 +43,7 @@ function Setting({
       >
         {/* Modal content */}
         <div
-          className={`w-5/6 lg:w-2/6 h-3/4 bg-black text-white rounded-3xl shadow p-8 transition-all ${modal ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}
+          className={`w-5/6 lg:w-2/6 bg-black text-white rounded-3xl shadow p-8 transition-all ${modal ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}
           onClick={(e) => e.stopPropagation()}
         >
           <button className="absolute top-2 right-2 p-1" onClick={toggleModal}>
@@ -115,6 +115,22 @@ function Setting({
               />
             </div>
           </form>
+          <div className="mt-12 flex justify-center items-center gap-4">
+            <a
+              href="https://github.com/leanghok120/beardoro"
+              target="_blank"
+              className="text-gray-400"
+            >
+              {<Github />}
+            </a>
+            <a
+              href="https://x.com/leangphok"
+              target="_blank"
+              className="text-gray-400"
+            >
+              {<Twitter />}
+            </a>
+          </div>
         </div>
       </div>
     </div>
