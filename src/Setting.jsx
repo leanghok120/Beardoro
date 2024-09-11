@@ -16,6 +16,7 @@ function Setting({
     "/night-ghibli.jpg",
     "/paris-rain.jpg",
     "/sunrise-seoul.jpg",
+    "/cozy-room.jpg",
   ];
 
   function toggleModal() {
