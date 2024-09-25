@@ -1,3 +1,4 @@
+import FullscreenButton from "./FullscreenButton";
 import Timer from "./Timer";
 import { useState } from "react";
 
@@ -12,6 +13,7 @@ function App() {
       style={{ backgroundImage: `url(${background})` }}
     >
       <Timer setBackground={setBackground} />
+      <FullscreenButton />
     </div>
   );
 }
